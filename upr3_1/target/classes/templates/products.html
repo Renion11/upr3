@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Продукти</title>
+    <style>
+        table { width: 60%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+<h2>Списък с Продукти</h2>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Име</th>
+        <th>Цена</th>
+        <th>Наличност (Stock)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.id}">1</td>
+        <td th:text="${product.name}">Име на продукт</td>
+        <td th:text="${product.price}">0.00</td>
+        <td th:text="${product.stock}">0</td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(products)}">
+        <td colspan="4">Няма намерени продукти.</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
